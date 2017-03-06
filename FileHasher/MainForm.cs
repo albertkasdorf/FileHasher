@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -64,6 +66,8 @@ namespace FileHasher
 
 			database = new Database( );
 			database.Open( databaseFilePath );
+
+			SetTitleWithVersion( );
 		}
 
 		private void MainForm_FormClosing( Object sender, FormClosingEventArgs e )
@@ -219,6 +223,14 @@ namespace FileHasher
 				TaskbarManager.Instance.SetProgressState(
 					TaskbarProgressBarState.Indeterminate );
 			}
+		}
+
+		private void SetTitleWithVersion( )
+		{
+			var assembly = Assembly.GetExecutingAssembly( );
+			var fvi = FileVersionInfo.GetVersionInfo( assembly.Location );
+			this.Text = string.Format(
+				"{0} {1}", Resources.MainForm_Title, fvi.FileVersion );
 		}
 	}
 }
