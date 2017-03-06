@@ -1,6 +1,7 @@
 ﻿using FileHasher.Logic;
 using FileHasher.ObjectModel;
 using FileHasher.Properties;
+using Microsoft.WindowsAPICodePack.Taskbar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -169,10 +170,10 @@ namespace FileHasher
 
 			workerTask.ContinueWith( ( _ ) =>
 			{
+				UIEnable( );
+
 				var resultForm = new ResultForm( results );
 				resultForm.ShowDialog( this );
-
-				UIEnable( );
 			}, CancellationToken.None, TaskContinuationOptions.None, uiScheduler );
 		}
 
@@ -193,9 +194,14 @@ namespace FileHasher
 			btnStart.Enabled = true;
 			btnCancel.Enabled = false;
 
-			//tlpProgress.Visible = false;
 			tspbProgress.Visible = false;
 			tsslPath.Visible = false;
+
+			if( TaskbarManager.IsPlatformSupported )
+			{
+				TaskbarManager.Instance.SetProgressState(
+					TaskbarProgressBarState.NoProgress );
+			}
 		}
 
 		private void UIDisable( )
@@ -205,9 +211,14 @@ namespace FileHasher
 			btnStart.Enabled = false;
 			btnCancel.Enabled = true;
 
-			//tlpProgress.Visible = true;
 			tspbProgress.Visible = true;
 			tsslPath.Visible = true;
+
+			if( TaskbarManager.IsPlatformSupported )
+			{
+				TaskbarManager.Instance.SetProgressState(
+					TaskbarProgressBarState.Indeterminate );
+			}
 		}
 	}
 }
