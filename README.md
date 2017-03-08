@@ -1,6 +1,11 @@
 # FileHasher
 Check the file integrity in your file system.
 
+## Installation
+
+Use the XCOPY deployment to install the application to a directory you like.
+The application database is located in the directory "%appdata%\FileHasher".
+
 ## Use
 
 First you need to configure the directories (1) that should be checked.
@@ -16,6 +21,7 @@ scan process can be stopped at any time with the cancel button.
 
 After the scan process has finished, the result view opens. In the top of the
 window (1) you can see how many files are changed and how many files can not
-be checked...
+be checked. Also the count of added and deleted file is shown. In the textbox
+below you can see a detailed report of the scan.
 
 ![ResultForm](./Images/ResultForm.png)
