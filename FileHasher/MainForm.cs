@@ -4,14 +4,11 @@ using FileHasher.Properties;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -115,16 +112,17 @@ namespace FileHasher
 			workerTask = Task.Factory.StartNew( ( ) =>
 			{
 				var stack = new Stack<Tuple<Int64, String>>( );
+				var searchPaths = Settings.Default.MainForm_Directories
+					.Where( x => Directory.Exists( x ) )
+					.Reverse( )
+					.ToList( );
 				var fileCount = 0;
 				var filesProcessed = 0;
 
-				foreach( var startPath in Settings.Default.MainForm_Directories )
+				foreach( var searchPath in searchPaths )
 				{
-					if( string.IsNullOrEmpty( startPath ) )
-						continue;
-
-					var startId = database.ItemIdGet( startPath );
-					stack.Push( new Tuple<Int64, String>( startId, startPath ) );
+					var id = database.ItemIdGet( searchPath );
+					stack.Push( new Tuple<Int64, String>( id, searchPath ) );
 				}
 
 				progress.Report(
