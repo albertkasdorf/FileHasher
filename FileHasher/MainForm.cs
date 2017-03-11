@@ -3,7 +3,9 @@ using FileHasher.ObjectModel;
 using FileHasher.Properties;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -17,20 +19,25 @@ namespace FileHasher
 {
 	public partial class MainForm : Form
 	{
+		//----------------------------------------------------------------------
+		// Constructors
+		//----------------------------------------------------------------------
+
 		public MainForm( )
 		{
 			InitializeComponent( );
-			InitializeBinding( );
 
 			cancellationTokenSource = new CancellationTokenSource( );
 			workerTask = Task.Factory.StartNew( ( ) => { } );
 			uiScheduler = TaskScheduler.FromCurrentSynchronizationContext( );
 
-			var progress = new Progress<UIProgress>( );
-			progress.ProgressChanged += Progress_ProgressChanged;
-
-			this.progress= progress as IProgress<UIProgress>;
+			ProgressInitialize( );
 		}
+
+
+		//----------------------------------------------------------------------
+		// Members
+		//----------------------------------------------------------------------
 
 		private Database database;
 		private CancellationTokenSource cancellationTokenSource;
@@ -38,33 +45,16 @@ namespace FileHasher
 		private TaskScheduler uiScheduler;
 		private IProgress<UIProgress> progress;
 
-		private void InitializeBinding( )
-		{
-			txbDirectories.DataBindings.Add(
-				"Lines", Settings.Default, "MainForm_Directories", false,
-				DataSourceUpdateMode.OnPropertyChanged );
-		}
+
+		//----------------------------------------------------------------------
+		// Methods ( event )
+		//----------------------------------------------------------------------
 
 		private void MainForm_Load( Object sender, EventArgs e )
 		{
-			var appName = "FileHasher";
-			var appDataPath = Environment.GetFolderPath(
-				Environment.SpecialFolder.ApplicationData );
-
-			var databaseName = "FileHasher.sqlite";
-			var databasePath = Path.Combine( appDataPath, appName );
-			var databaseFilePath = Path.Combine(
-				appDataPath, appName, databaseName );
-
-			if( !Directory.Exists( databasePath ) )
-			{
-				Directory.CreateDirectory( databasePath );
-			}
-
-			database = new Database( );
-			database.Open( databaseFilePath );
-
-			SetTitleWithVersion( );
+			TitleWithVersionSet( );
+			UserSettingsLoad( );
+			DatabaseInitialize( );
 		}
 
 		private void MainForm_FormClosing( Object sender, FormClosingEventArgs e )
@@ -85,6 +75,8 @@ namespace FileHasher
 		{
 			database.Close( );
 			database.Dispose( );
+
+			UserSettingsSave( );
 		}
 
 		private void btnDirectories_Click( Object sender, EventArgs e )
@@ -97,8 +89,7 @@ namespace FileHasher
 			var dialogResult = fbd.ShowDialog( this );
 			if( dialogResult == DialogResult.OK )
 			{
-				txbDirectories.Text += Environment.NewLine;
-				txbDirectories.Text += fbd.SelectedPath;
+				dgvDirectories.Rows.Add( fbd.SelectedPath );
 			}
 		}
 
@@ -112,7 +103,7 @@ namespace FileHasher
 			workerTask = Task.Factory.StartNew( ( ) =>
 			{
 				var stack = new Stack<Tuple<Int64, String>>( );
-				var searchPaths = Settings.Default.MainForm_Directories
+				var searchPaths = UIDirectoriesGet()
 					.Where( x => Directory.Exists( x ) )
 					.Reverse( )
 					.ToList( );
@@ -219,9 +210,34 @@ namespace FileHasher
 			}
 		}
 
+		private void dgvDirectories_CellValidating(
+			Object sender, DataGridViewCellValidatingEventArgs e )
+		{
+			var dgv = sender as DataGridView;
+			var path = e.FormattedValue as string;
+
+			dgv.Rows[e.RowIndex].ErrorText = string.Empty;
+
+			// Don't try to validate the 'new row' until finished editing since
+			// there is not any point in validating its initial value.
+			if( dgv.Rows[e.RowIndex].IsNewRow )
+				return;
+
+			e.Cancel = !Directory.Exists( path );
+			if( e.Cancel )
+			{
+				dgv.Rows[e.RowIndex].ErrorText = Resources.MainForm_EnterValidPath;
+			}
+		}
+
+
+		//----------------------------------------------------------------------
+		// Methods ( private )
+		//----------------------------------------------------------------------
+
 		private void UIEnable( )
 		{
-			txbDirectories.Enabled = true;
+			dgvDirectories.Enabled = true;
 			btnDirectories.Enabled = true;
 			btnStart.Enabled = true;
 			btnCancel.Enabled = false;
@@ -238,7 +254,7 @@ namespace FileHasher
 
 		private void UIDisable( )
 		{
-			txbDirectories.Enabled = false;
+			dgvDirectories.Enabled = false;
 			btnDirectories.Enabled = false;
 			btnStart.Enabled = false;
 			btnCancel.Enabled = true;
@@ -257,7 +273,7 @@ namespace FileHasher
 			}
 		}
 
-		private void SetTitleWithVersion( )
+		private void TitleWithVersionSet( )
 		{
 			var assembly = Assembly.GetExecutingAssembly( );
 			var fvi = FileVersionInfo.GetVersionInfo( assembly.Location );
@@ -306,6 +322,58 @@ namespace FileHasher
 			catch( Exception ) { }
 
 			return fileCount;
+		}
+
+		private void UserSettingsLoad( )
+		{
+			foreach( var directory in Settings.Default.MainForm_Directories )
+			{
+				dgvDirectories.Rows.Add( directory );
+			}
+		}
+
+		private void UserSettingsSave( )
+		{
+			Settings.Default.MainForm_Directories = UIDirectoriesGet( ).ToArray( );
+			Settings.Default.Save( );
+		}
+
+		private List<String> UIDirectoriesGet( )
+		{
+			return dgvDirectories
+				.Rows
+				.Cast<DataGridViewRow>()
+				.Where( x => !x.IsNewRow )
+				.Select( x => x.Cells[dgvtbcPath.Index].Value as string )
+				.ToList( );
+		}
+
+		private void ProgressInitialize( )
+		{
+			var progress = new Progress<UIProgress>( );
+			progress.ProgressChanged += Progress_ProgressChanged;
+
+			this.progress = progress as IProgress<UIProgress>;
+		}
+
+		private void DatabaseInitialize( )
+		{
+			var appName = "FileHasher";
+			var appDataPath = Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData );
+
+			var databaseName = "FileHasher.sqlite";
+			var databasePath = Path.Combine( appDataPath, appName );
+			var databaseFilePath = Path.Combine(
+				appDataPath, appName, databaseName );
+
+			if( !Directory.Exists( databasePath ) )
+			{
+				Directory.CreateDirectory( databasePath );
+			}
+
+			database = new Database( );
+			database.Open( databaseFilePath );
 		}
 	}
 }

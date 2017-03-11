@@ -160,6 +160,9 @@
   <data name="MainForm_DetermineNumberOfFiles" xml:space="preserve">
     <value>Determine the number of files.</value>
   </data>
+  <data name="MainForm_EnterValidPath" xml:space="preserve">
+    <value>Please enter a valid directory path.</value>
+  </data>
   <data name="MainForm_Title" xml:space="preserve">
     <value>FileHasher</value>
   </data>

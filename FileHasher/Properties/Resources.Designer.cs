@@ -199,6 +199,15 @@ namespace FileHasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid directory path..
+        /// </summary>
+        internal static string MainForm_EnterValidPath {
+            get {
+                return ResourceManager.GetString("MainForm_EnterValidPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FileHasher.
         /// </summary>
         internal static string MainForm_Title {

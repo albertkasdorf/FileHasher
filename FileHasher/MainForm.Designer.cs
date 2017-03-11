@@ -33,13 +33,15 @@
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
 			this.lblDirectories = new System.Windows.Forms.Label();
-			this.txbDirectories = new System.Windows.Forms.TextBox();
 			this.btnDirectories = new System.Windows.Forms.Button();
+			this.dgvDirectories = new System.Windows.Forms.DataGridView();
 			this.ssStatus = new System.Windows.Forms.StatusStrip();
 			this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tsslPath = new System.Windows.Forms.ToolStripStatusLabel();
+			this.dgvtbcPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tlpMain.SuspendLayout();
 			this.tlpStartStop.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDirectories)).BeginInit();
 			this.ssStatus.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -51,17 +53,17 @@
 			this.tlpMain.ColumnCount = 2;
 			this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tlpMain.Controls.Add(this.tlpStartStop, 0, 2);
 			this.tlpMain.Controls.Add(this.lblDirectories, 0, 0);
-			this.tlpMain.Controls.Add(this.txbDirectories, 0, 1);
 			this.tlpMain.Controls.Add(this.btnDirectories, 1, 0);
+			this.tlpMain.Controls.Add(this.dgvDirectories, 0, 1);
 			this.tlpMain.Location = new System.Drawing.Point(12, 12);
 			this.tlpMain.Name = "tlpMain";
 			this.tlpMain.RowCount = 3;
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tlpMain.Size = new System.Drawing.Size(760, 224);
 			this.tlpMain.TabIndex = 0;
 			// 
@@ -85,7 +87,7 @@
 			this.tlpStartStop.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlpStartStop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
 			this.tlpStartStop.Size = new System.Drawing.Size(760, 29);
-			this.tlpStartStop.TabIndex = 1;
+			this.tlpStartStop.TabIndex = 3;
 			// 
 			// btnCancel
 			// 
@@ -119,18 +121,6 @@
 			this.lblDirectories.TabIndex = 0;
 			this.lblDirectories.Text = "Directories:";
 			// 
-			// txbDirectories
-			// 
-			this.txbDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpMain.SetColumnSpan(this.txbDirectories, 2);
-			this.txbDirectories.Location = new System.Drawing.Point(3, 32);
-			this.txbDirectories.Multiline = true;
-			this.txbDirectories.Name = "txbDirectories";
-			this.txbDirectories.Size = new System.Drawing.Size(754, 160);
-			this.txbDirectories.TabIndex = 3;
-			// 
 			// btnDirectories
 			// 
 			this.btnDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -139,10 +129,29 @@
 			this.btnDirectories.Location = new System.Drawing.Point(734, 3);
 			this.btnDirectories.Name = "btnDirectories";
 			this.btnDirectories.Size = new System.Drawing.Size(23, 23);
-			this.btnDirectories.TabIndex = 2;
+			this.btnDirectories.TabIndex = 1;
 			this.btnDirectories.Text = "+";
 			this.btnDirectories.UseVisualStyleBackColor = true;
 			this.btnDirectories.Click += new System.EventHandler(this.btnDirectories_Click);
+			// 
+			// dgvDirectories
+			// 
+			this.dgvDirectories.AllowUserToResizeRows = false;
+			this.dgvDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvDirectories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvDirectories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvtbcPath});
+			this.tlpMain.SetColumnSpan(this.dgvDirectories, 2);
+			this.dgvDirectories.Location = new System.Drawing.Point(3, 32);
+			this.dgvDirectories.MultiSelect = false;
+			this.dgvDirectories.Name = "dgvDirectories";
+			this.dgvDirectories.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dgvDirectories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgvDirectories.Size = new System.Drawing.Size(754, 160);
+			this.dgvDirectories.TabIndex = 2;
+			this.dgvDirectories.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDirectories_CellValidating);
 			// 
 			// ssStatus
 			// 
@@ -166,11 +175,18 @@
 			// 
 			this.tsslPath.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.tsslPath.Name = "tsslPath";
-			this.tsslPath.Size = new System.Drawing.Size(536, 17);
+			this.tsslPath.Size = new System.Drawing.Size(769, 17);
 			this.tsslPath.Spring = true;
 			this.tsslPath.Text = "<Path>";
 			this.tsslPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.tsslPath.Visible = false;
+			// 
+			// dgvtbcPath
+			// 
+			this.dgvtbcPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+			this.dgvtbcPath.HeaderText = "Path";
+			this.dgvtbcPath.Name = "dgvtbcPath";
+			this.dgvtbcPath.Width = 54;
 			// 
 			// MainForm
 			// 
@@ -179,6 +195,7 @@
 			this.ClientSize = new System.Drawing.Size(784, 261);
 			this.Controls.Add(this.tlpMain);
 			this.Controls.Add(this.ssStatus);
+			this.MinimumSize = new System.Drawing.Size(800, 300);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FileHasher";
@@ -188,6 +205,7 @@
 			this.tlpMain.ResumeLayout(false);
 			this.tlpMain.PerformLayout();
 			this.tlpStartStop.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvDirectories)).EndInit();
 			this.ssStatus.ResumeLayout(false);
 			this.ssStatus.PerformLayout();
 			this.ResumeLayout(false);
@@ -202,10 +220,11 @@
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnStart;
 		private System.Windows.Forms.Button btnDirectories;
-		private System.Windows.Forms.TextBox txbDirectories;
 		private System.Windows.Forms.Label lblDirectories;
 		private System.Windows.Forms.StatusStrip ssStatus;
 		private System.Windows.Forms.ToolStripProgressBar tspbProgress;
 		private System.Windows.Forms.ToolStripStatusLabel tsslPath;
+		private System.Windows.Forms.DataGridView dgvDirectories;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dgvtbcPath;
 	}
 }
