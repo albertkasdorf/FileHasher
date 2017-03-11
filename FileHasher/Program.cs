@@ -20,60 +20,78 @@ namespace FileHasher
 //------------------------------------------------------------------------------
 //SQLiteConnection.CreateFile( "" );
 //------------------------------------------------------------------------------
-//var results = new List<ResultSet>( );
+//[STAThread]
+//public static void Main( )
+//{
+//	Application.EnableVisualStyles( );
+//	Application.SetCompatibleTextRenderingDefault( false );
 
-//results.Add( new ResultSet( @"C:\Users\Albert\OneDrive", new IOException( ) ) );
-//results.Add( new ResultSet( new FSItemSet(
-//	@"C:\Users\Albert\OneDrive\Pictures",
-//	new FSItem[] {
-//		new FSItem( FSType.Directory, "Camera Roll" ),
-//		new FSItem( FSType.File, "WP_20170228_005.jpg", "AA12" ),
-//	},
-//	new FSItem[] {
-//		new FSItem( FSType.File, "WP_20170221_004.jpg", "BB34" ),
-//	},
-//	new FSItem[] {
-//		new FSItem( FSType.File, "WP_20170228_001.jpg" ),
-//		new FSItem( FSType.Directory, "Food" ),
-//	},
-//	new FSItem[] {
-//		new FSItem( FSType.File, "2014-01-19 A-295504-1360490163-8311.jpeg", new IOException( ) ),
-//		new FSItem( FSType.File, "tokyo_fashion_summer_2015_04.jpg", new InvalidDataException( ) ),
-//	},
-//	new FSItem[] { } ) ) );
-//results.Add( new ResultSet( new FSItemSet(
-//	@"C:\Users\Albert\OneDrive\Food",
-//	new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
-//results.Add( new ResultSet( new FSItemSet(
-//	@"C:\Users\Albert\OneDrive\Gespeicherte Bilder",
-//	new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
-//results.Add( new ResultSet( new FSItemSet(
-//	@"C:\Users\Albert\OneDrive\Häuser",
-//	new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
-//results.Add( new ResultSet( new FSItemSet(
-//	@"C:\Users\Albert\OneDrive\Ideen",
-//	new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
-//results.Add( new ResultSet( new FSItemSet(
-//	@"C:\Users\Albert\OneDrive\Kleidung",
-//	new FSItem[] {
-//		new FSItem( FSType.Directory, "Camera Roll" ),
-//		new FSItem( FSType.File, "WP_20170228_005.jpg", "AA12" ),
-//	},
-//	new FSItem[] {
-//		new FSItem( FSType.File, "WP_20170221_004.jpg", "BB34" ),
-//	},
-//	new FSItem[] {
-//		new FSItem( FSType.File, "WP_20170228_001.jpg" ),
-//		new FSItem( FSType.Directory, "Food" ),
-//	},
-//	new FSItem[] {
-//		new FSItem( FSType.File, "2014-01-19 A-295504-1360490163-8311.jpeg", new IOException( ) ),
-//		new FSItem( FSType.File, "tokyo_fashion_summer_2015_04.jpg", new InvalidDataException( ) ),
-//	},
-//	new FSItem[] { } ) ) );
+//	var results = new List<ResultSet>( );
 
-//var resultForm = new ResultForm( results );
-//resultForm.ShowDialog( );
+//	//Test VirtualMode with many folder.
+
+//	var emptyFsItem = new FSItem[] { };
+//	for( int i = 0; i < 100000; i++ )
+//	{
+//		results.Add( new ResultSet( new FSItemSet(
+//			Guid.NewGuid( ).ToString( ),
+//			emptyFsItem, emptyFsItem, emptyFsItem, emptyFsItem, emptyFsItem ) ) );
+//	}
+
+
+//	results.Add( new ResultSet( @"C:\Users\Albert\OneDrive", new IOException( ) ) );
+//	results.Add( new ResultSet( new FSItemSet(
+//		@"C:\Users\Albert\OneDrive\Pictures",
+//		new FSItem[] {
+//					new FSItem( FSType.Directory, "Camera Roll" ),
+//					new FSItem( FSType.File, "WP_20170228_005.jpg", "AA12" ),
+//		},
+//		new FSItem[] {
+//					new FSItem( FSType.File, "WP_20170221_004.jpg", "BB34" ),
+//		},
+//		new FSItem[] {
+//					new FSItem( FSType.File, "WP_20170228_001.jpg" ),
+//					new FSItem( FSType.Directory, "Food" ),
+//		},
+//		new FSItem[] {
+//					new FSItem( FSType.File, "2014-01-19 A-295504-1360490163-8311.jpeg", new IOException( ) ),
+//					new FSItem( FSType.File, "tokyo_fashion_summer_2015_04.jpg", new InvalidDataException( ) ),
+//		},
+//		new FSItem[] { } ) ) );
+//	results.Add( new ResultSet( new FSItemSet(
+//		@"C:\Users\Albert\OneDrive\Food",
+//		new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
+//	results.Add( new ResultSet( new FSItemSet(
+//		@"C:\Users\Albert\OneDrive\Gespeicherte Bilder",
+//		new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
+//	results.Add( new ResultSet( new FSItemSet(
+//		@"C:\Users\Albert\OneDrive\Häuser",
+//		new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
+//	results.Add( new ResultSet( new FSItemSet(
+//		@"C:\Users\Albert\OneDrive\Ideen",
+//		new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { }, new FSItem[] { } ) ) );
+//	results.Add( new ResultSet( new FSItemSet(
+//		@"C:\Users\Albert\OneDrive\Kleidung",
+//		new FSItem[] {
+//					new FSItem( FSType.Directory, "Camera Roll" ),
+//					new FSItem( FSType.File, "WP_20170229_005.jpg", "AA12" ),
+//		},
+//		new FSItem[] {
+//					new FSItem( FSType.File, "WP_20170220_004.jpg", "BB34" ),
+//		},
+//		new FSItem[] {
+//					new FSItem( FSType.File, "WP_20170228_001.jpg" ),
+//					new FSItem( FSType.Directory, "Food" ),
+//		},
+//		new FSItem[] {
+//					new FSItem( FSType.File, "2014-01-19 A-295504-1360490163-8311.jpeg", new IOException( ) ),
+//					new FSItem( FSType.File, "tokyo_fashion_summer_2015_04.jpg", new InvalidDataException( ) ),
+//		},
+//		new FSItem[] { } ) ) );
+
+//	var resultForm = new ResultForm( results );
+//	resultForm.ShowDialog( );
+//}
 //------------------------------------------------------------------------------
 //	//var startPath = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments );
 //	//var startPath = Environment.GetFolderPath( Environment.SpecialFolder.MyPictures );

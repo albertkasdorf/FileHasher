@@ -61,6 +61,126 @@ namespace FileHasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddFile_16x {
+            get {
+                object obj = ResourceManager.GetObject("AddFile_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddFolder_16x {
+            get {
+                object obj = ResourceManager.GetObject("AddFolder_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CSSourceFile_16x {
+            get {
+                object obj = ResourceManager.GetObject("CSSourceFile_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DeleteFolder_16x {
+            get {
+                object obj = ResourceManager.GetObject("DeleteFolder_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Document_16x {
+            get {
+                object obj = ResourceManager.GetObject("Document_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EditPage_16x {
+            get {
+                object obj = ResourceManager.GetObject("EditPage_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FileError_16x {
+            get {
+                object obj = ResourceManager.GetObject("FileError_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FindinFiles_16x {
+            get {
+                object obj = ResourceManager.GetObject("FindinFiles_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Folder_16x {
+            get {
+                object obj = ResourceManager.GetObject("Folder_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Folder_grey_16x {
+            get {
+                object obj = ResourceManager.GetObject("Folder_grey_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderError_16x {
+            get {
+                object obj = ResourceManager.GetObject("FolderError_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOffline_16x {
+            get {
+                object obj = ResourceManager.GetObject("FolderOffline_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can not close the application as long as the scan process is running..
         /// </summary>
         internal static string MainForm_CanNotCloseTaskIsRunning {
@@ -75,6 +195,120 @@ namespace FileHasher.Properties {
         internal static string MainForm_Title {
             get {
                 return ResourceManager.GetString("MainForm_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoResults_16x {
+            get {
+                object obj = ResourceManager.GetObject("NoResults_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added.
+        /// </summary>
+        internal static string ResultForm_TabNameAdded {
+            get {
+                return ResourceManager.GetString("ResultForm_TabNameAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed.
+        /// </summary>
+        internal static string ResultForm_TabNameChanged {
+            get {
+                return ResourceManager.GetString("ResultForm_TabNameChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted.
+        /// </summary>
+        internal static string ResultForm_TabNameDeleted {
+            get {
+                return ResourceManager.GetString("ResultForm_TabNameDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Examined paths.
+        /// </summary>
+        internal static string ResultForm_TabNameExaminedPaths {
+            get {
+                return ResourceManager.GetString("ResultForm_TabNameExaminedPaths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Faulted.
+        /// </summary>
+        internal static string ResultForm_TabNameFaulted {
+            get {
+                return ResourceManager.GetString("ResultForm_TabNameFaulted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ({1}).
+        /// </summary>
+        internal static string ResultForm_TabNameFormat {
+            get {
+                return ResourceManager.GetString("ResultForm_TabNameFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextFile_16x {
+            get {
+                object obj = ResourceManager.GetObject("TextFile_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VBFile_16x {
+            get {
+                object obj = ResourceManager.GetObject("VBFile_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VSO_Folder_16x {
+            get {
+                object obj = ResourceManager.GetObject("VSO_Folder_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VSO_Folder_Grey_16x {
+            get {
+                object obj = ResourceManager.GetObject("VSO_Folder_Grey_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VSO_Folder_hoverblue_16x {
+            get {
+                object obj = ResourceManager.GetObject("VSO_Folder_hoverblue_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -28,208 +28,202 @@
 		/// </summary>
 		private void InitializeComponent( )
 		{
-			this.rtbResults = new System.Windows.Forms.RichTextBox();
+			this.tcResult = new System.Windows.Forms.TabControl();
+			this.tpChanged = new System.Windows.Forms.TabPage();
+			this.dgvChanged = new System.Windows.Forms.DataGridView();
+			this.tpFaulted = new System.Windows.Forms.TabPage();
+			this.dgvFaulted = new System.Windows.Forms.DataGridView();
+			this.tpAdded = new System.Windows.Forms.TabPage();
+			this.dgvAdded = new System.Windows.Forms.DataGridView();
+			this.tpDeleted = new System.Windows.Forms.TabPage();
+			this.dgvDeleted = new System.Windows.Forms.DataGridView();
+			this.tpExaminedPaths = new System.Windows.Forms.TabPage();
+			this.dgvExaminedPaths = new System.Windows.Forms.DataGridView();
+			this.tlpResult = new System.Windows.Forms.TableLayoutPanel();
 			this.btnClose = new System.Windows.Forms.Button();
-			this.tlpCounter = new System.Windows.Forms.TableLayoutPanel();
-			this.lblChanged = new System.Windows.Forms.Label();
-			this.lblFaulted = new System.Windows.Forms.Label();
-			this.lblAdded = new System.Windows.Forms.Label();
-			this.lblDeleted = new System.Windows.Forms.Label();
-			this.txbChanged = new System.Windows.Forms.TextBox();
-			this.txbFaulted = new System.Windows.Forms.TextBox();
-			this.txbAdded = new System.Windows.Forms.TextBox();
-			this.txbDeleted = new System.Windows.Forms.TextBox();
-			this.tlpResultForm = new System.Windows.Forms.TableLayoutPanel();
 			this.pbProgress = new System.Windows.Forms.ProgressBar();
-			this.tlpControl = new System.Windows.Forms.TableLayoutPanel();
-			this.tlpCounter.SuspendLayout();
-			this.tlpResultForm.SuspendLayout();
-			this.tlpControl.SuspendLayout();
+			this.tcResult.SuspendLayout();
+			this.tpChanged.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvChanged)).BeginInit();
+			this.tpFaulted.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvFaulted)).BeginInit();
+			this.tpAdded.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvAdded)).BeginInit();
+			this.tpDeleted.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).BeginInit();
+			this.tpExaminedPaths.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvExaminedPaths)).BeginInit();
+			this.tlpResult.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// rtbResults
+			// tcResult
 			// 
-			this.rtbResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.tcResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.rtbResults.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rtbResults.Location = new System.Drawing.Point(3, 29);
-			this.rtbResults.Name = "rtbResults";
-			this.rtbResults.ReadOnly = true;
-			this.rtbResults.Size = new System.Drawing.Size(754, 276);
-			this.rtbResults.TabIndex = 1;
-			this.rtbResults.Text = "";
+			this.tlpResult.SetColumnSpan(this.tcResult, 2);
+			this.tcResult.Controls.Add(this.tpChanged);
+			this.tcResult.Controls.Add(this.tpFaulted);
+			this.tcResult.Controls.Add(this.tpAdded);
+			this.tcResult.Controls.Add(this.tpDeleted);
+			this.tcResult.Controls.Add(this.tpExaminedPaths);
+			this.tcResult.Location = new System.Drawing.Point(3, 3);
+			this.tcResult.Name = "tcResult";
+			this.tcResult.SelectedIndex = 0;
+			this.tcResult.Size = new System.Drawing.Size(760, 308);
+			this.tcResult.TabIndex = 1;
+			// 
+			// tpChanged
+			// 
+			this.tpChanged.Controls.Add(this.dgvChanged);
+			this.tpChanged.ForeColor = System.Drawing.SystemColors.ControlText;
+			this.tpChanged.Location = new System.Drawing.Point(4, 22);
+			this.tpChanged.Name = "tpChanged";
+			this.tpChanged.Padding = new System.Windows.Forms.Padding(3);
+			this.tpChanged.Size = new System.Drawing.Size(752, 282);
+			this.tpChanged.TabIndex = 0;
+			this.tpChanged.Text = "Changed";
+			this.tpChanged.UseVisualStyleBackColor = true;
+			// 
+			// dgvChanged
+			// 
+			this.dgvChanged.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvChanged.Location = new System.Drawing.Point(6, 6);
+			this.dgvChanged.Name = "dgvChanged";
+			this.dgvChanged.Size = new System.Drawing.Size(740, 270);
+			this.dgvChanged.TabIndex = 0;
+			this.dgvChanged.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
+			// 
+			// tpFaulted
+			// 
+			this.tpFaulted.Controls.Add(this.dgvFaulted);
+			this.tpFaulted.Location = new System.Drawing.Point(4, 22);
+			this.tpFaulted.Name = "tpFaulted";
+			this.tpFaulted.Padding = new System.Windows.Forms.Padding(3);
+			this.tpFaulted.Size = new System.Drawing.Size(752, 282);
+			this.tpFaulted.TabIndex = 1;
+			this.tpFaulted.Text = "Faulted";
+			this.tpFaulted.UseVisualStyleBackColor = true;
+			// 
+			// dgvFaulted
+			// 
+			this.dgvFaulted.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvFaulted.Location = new System.Drawing.Point(6, 6);
+			this.dgvFaulted.Name = "dgvFaulted";
+			this.dgvFaulted.RowHeadersVisible = false;
+			this.dgvFaulted.Size = new System.Drawing.Size(740, 270);
+			this.dgvFaulted.TabIndex = 1;
+			this.dgvFaulted.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
+			// 
+			// tpAdded
+			// 
+			this.tpAdded.Controls.Add(this.dgvAdded);
+			this.tpAdded.Location = new System.Drawing.Point(4, 22);
+			this.tpAdded.Name = "tpAdded";
+			this.tpAdded.Padding = new System.Windows.Forms.Padding(3);
+			this.tpAdded.Size = new System.Drawing.Size(752, 282);
+			this.tpAdded.TabIndex = 2;
+			this.tpAdded.Text = "Added";
+			this.tpAdded.UseVisualStyleBackColor = true;
+			// 
+			// dgvAdded
+			// 
+			this.dgvAdded.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvAdded.Location = new System.Drawing.Point(6, 6);
+			this.dgvAdded.Name = "dgvAdded";
+			this.dgvAdded.Size = new System.Drawing.Size(740, 270);
+			this.dgvAdded.TabIndex = 0;
+			this.dgvAdded.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
+			// 
+			// tpDeleted
+			// 
+			this.tpDeleted.Controls.Add(this.dgvDeleted);
+			this.tpDeleted.Location = new System.Drawing.Point(4, 22);
+			this.tpDeleted.Name = "tpDeleted";
+			this.tpDeleted.Padding = new System.Windows.Forms.Padding(3);
+			this.tpDeleted.Size = new System.Drawing.Size(752, 282);
+			this.tpDeleted.TabIndex = 3;
+			this.tpDeleted.Text = "Deleted";
+			this.tpDeleted.UseVisualStyleBackColor = true;
+			// 
+			// dgvDeleted
+			// 
+			this.dgvDeleted.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvDeleted.Location = new System.Drawing.Point(6, 6);
+			this.dgvDeleted.Name = "dgvDeleted";
+			this.dgvDeleted.Size = new System.Drawing.Size(740, 270);
+			this.dgvDeleted.TabIndex = 0;
+			this.dgvDeleted.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
+			// 
+			// tpExaminedPaths
+			// 
+			this.tpExaminedPaths.Controls.Add(this.dgvExaminedPaths);
+			this.tpExaminedPaths.Location = new System.Drawing.Point(4, 22);
+			this.tpExaminedPaths.Name = "tpExaminedPaths";
+			this.tpExaminedPaths.Padding = new System.Windows.Forms.Padding(3);
+			this.tpExaminedPaths.Size = new System.Drawing.Size(752, 282);
+			this.tpExaminedPaths.TabIndex = 4;
+			this.tpExaminedPaths.Text = "Examined paths";
+			this.tpExaminedPaths.UseVisualStyleBackColor = true;
+			// 
+			// dgvExaminedPaths
+			// 
+			this.dgvExaminedPaths.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvExaminedPaths.Location = new System.Drawing.Point(6, 6);
+			this.dgvExaminedPaths.Name = "dgvExaminedPaths";
+			this.dgvExaminedPaths.Size = new System.Drawing.Size(740, 270);
+			this.dgvExaminedPaths.TabIndex = 0;
+			this.dgvExaminedPaths.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
+			// 
+			// tlpResult
+			// 
+			this.tlpResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpResult.ColumnCount = 2;
+			this.tlpResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tlpResult.Controls.Add(this.tcResult, 0, 0);
+			this.tlpResult.Controls.Add(this.pbProgress, 0, 1);
+			this.tlpResult.Controls.Add(this.btnClose, 1, 1);
+			this.tlpResult.Location = new System.Drawing.Point(9, 9);
+			this.tlpResult.Margin = new System.Windows.Forms.Padding(0);
+			this.tlpResult.Name = "tlpResult";
+			this.tlpResult.RowCount = 2;
+			this.tlpResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tlpResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tlpResult.Size = new System.Drawing.Size(766, 343);
+			this.tlpResult.TabIndex = 0;
 			// 
 			// btnClose
 			// 
 			this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnClose.Location = new System.Drawing.Point(682, 3);
+			this.btnClose.Location = new System.Drawing.Point(688, 317);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
-			this.btnClose.TabIndex = 1;
+			this.btnClose.TabIndex = 0;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			// 
-			// tlpCounter
-			// 
-			this.tlpCounter.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tlpCounter.AutoSize = true;
-			this.tlpCounter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tlpCounter.ColumnCount = 8;
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpCounter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tlpCounter.Controls.Add(this.lblChanged, 0, 0);
-			this.tlpCounter.Controls.Add(this.txbChanged, 1, 0);
-			this.tlpCounter.Controls.Add(this.lblFaulted, 2, 0);
-			this.tlpCounter.Controls.Add(this.txbFaulted, 3, 0);
-			this.tlpCounter.Controls.Add(this.lblAdded, 4, 0);
-			this.tlpCounter.Controls.Add(this.txbAdded, 5, 0);
-			this.tlpCounter.Controls.Add(this.lblDeleted, 6, 0);
-			this.tlpCounter.Controls.Add(this.txbDeleted, 7, 0);
-			this.tlpCounter.Location = new System.Drawing.Point(163, 0);
-			this.tlpCounter.Margin = new System.Windows.Forms.Padding(0);
-			this.tlpCounter.Name = "tlpCounter";
-			this.tlpCounter.RowCount = 1;
-			this.tlpCounter.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tlpCounter.Size = new System.Drawing.Size(434, 26);
-			this.tlpCounter.TabIndex = 0;
-			// 
-			// lblChanged
-			// 
-			this.lblChanged.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.lblChanged.AutoSize = true;
-			this.lblChanged.Location = new System.Drawing.Point(3, 6);
-			this.lblChanged.Name = "lblChanged";
-			this.lblChanged.Size = new System.Drawing.Size(53, 13);
-			this.lblChanged.TabIndex = 0;
-			this.lblChanged.Text = "Changed:";
-			// 
-			// lblFaulted
-			// 
-			this.lblFaulted.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.lblFaulted.AutoSize = true;
-			this.lblFaulted.Location = new System.Drawing.Point(118, 6);
-			this.lblFaulted.Name = "lblFaulted";
-			this.lblFaulted.Size = new System.Drawing.Size(45, 13);
-			this.lblFaulted.TabIndex = 2;
-			this.lblFaulted.Text = "Faulted:";
-			// 
-			// lblAdded
-			// 
-			this.lblAdded.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.lblAdded.AutoSize = true;
-			this.lblAdded.Location = new System.Drawing.Point(225, 6);
-			this.lblAdded.Name = "lblAdded";
-			this.lblAdded.Size = new System.Drawing.Size(41, 13);
-			this.lblAdded.TabIndex = 4;
-			this.lblAdded.Text = "Added:";
-			// 
-			// lblDeleted
-			// 
-			this.lblDeleted.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.lblDeleted.AutoSize = true;
-			this.lblDeleted.Location = new System.Drawing.Point(328, 6);
-			this.lblDeleted.Name = "lblDeleted";
-			this.lblDeleted.Size = new System.Drawing.Size(47, 13);
-			this.lblDeleted.TabIndex = 6;
-			this.lblDeleted.Text = "Deleted:";
-			// 
-			// txbChanged
-			// 
-			this.txbChanged.Location = new System.Drawing.Point(62, 3);
-			this.txbChanged.Name = "txbChanged";
-			this.txbChanged.ReadOnly = true;
-			this.txbChanged.Size = new System.Drawing.Size(50, 20);
-			this.txbChanged.TabIndex = 1;
-			this.txbChanged.TabStop = false;
-			this.txbChanged.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// txbFaulted
-			// 
-			this.txbFaulted.Location = new System.Drawing.Point(169, 3);
-			this.txbFaulted.Name = "txbFaulted";
-			this.txbFaulted.ReadOnly = true;
-			this.txbFaulted.Size = new System.Drawing.Size(50, 20);
-			this.txbFaulted.TabIndex = 3;
-			this.txbFaulted.TabStop = false;
-			this.txbFaulted.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// txbAdded
-			// 
-			this.txbAdded.Location = new System.Drawing.Point(272, 3);
-			this.txbAdded.Name = "txbAdded";
-			this.txbAdded.ReadOnly = true;
-			this.txbAdded.Size = new System.Drawing.Size(50, 20);
-			this.txbAdded.TabIndex = 5;
-			this.txbAdded.TabStop = false;
-			this.txbAdded.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// txbDeleted
-			// 
-			this.txbDeleted.Location = new System.Drawing.Point(381, 3);
-			this.txbDeleted.Name = "txbDeleted";
-			this.txbDeleted.ReadOnly = true;
-			this.txbDeleted.Size = new System.Drawing.Size(50, 20);
-			this.txbDeleted.TabIndex = 7;
-			this.txbDeleted.TabStop = false;
-			this.txbDeleted.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// tlpResultForm
-			// 
-			this.tlpResultForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpResultForm.ColumnCount = 1;
-			this.tlpResultForm.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpResultForm.Controls.Add(this.tlpCounter, 0, 0);
-			this.tlpResultForm.Controls.Add(this.rtbResults, 0, 1);
-			this.tlpResultForm.Controls.Add(this.tlpControl, 0, 2);
-			this.tlpResultForm.Location = new System.Drawing.Point(12, 12);
-			this.tlpResultForm.Name = "tlpResultForm";
-			this.tlpResultForm.RowCount = 3;
-			this.tlpResultForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tlpResultForm.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpResultForm.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tlpResultForm.Size = new System.Drawing.Size(760, 337);
-			this.tlpResultForm.TabIndex = 0;
-			// 
 			// pbProgress
 			// 
-			this.pbProgress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.pbProgress.Location = new System.Drawing.Point(3, 9);
+			this.pbProgress.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.pbProgress.Location = new System.Drawing.Point(3, 323);
 			this.pbProgress.Name = "pbProgress";
-			this.pbProgress.Size = new System.Drawing.Size(100, 10);
+			this.pbProgress.Size = new System.Drawing.Size(200, 10);
 			this.pbProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-			this.pbProgress.TabIndex = 0;
-			// 
-			// tlpControl
-			// 
-			this.tlpControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpControl.AutoSize = true;
-			this.tlpControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tlpControl.ColumnCount = 3;
-			this.tlpControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpControl.Controls.Add(this.pbProgress, 0, 0);
-			this.tlpControl.Controls.Add(this.btnClose, 2, 0);
-			this.tlpControl.Location = new System.Drawing.Point(0, 308);
-			this.tlpControl.Margin = new System.Windows.Forms.Padding(0);
-			this.tlpControl.Name = "tlpControl";
-			this.tlpControl.RowCount = 1;
-			this.tlpControl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-			this.tlpControl.Size = new System.Drawing.Size(760, 29);
-			this.tlpControl.TabIndex = 2;
+			this.pbProgress.TabIndex = 2;
 			// 
 			// ResultForm
 			// 
@@ -237,7 +231,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnClose;
 			this.ClientSize = new System.Drawing.Size(784, 361);
-			this.Controls.Add(this.tlpResultForm);
+			this.Controls.Add(this.tlpResult);
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(800, 400);
 			this.Name = "ResultForm";
@@ -245,30 +239,36 @@
 			this.Text = "FileHasher Result";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResultForm_FormClosing);
 			this.Load += new System.EventHandler(this.ResultForm_Load);
-			this.tlpCounter.ResumeLayout(false);
-			this.tlpCounter.PerformLayout();
-			this.tlpResultForm.ResumeLayout(false);
-			this.tlpResultForm.PerformLayout();
-			this.tlpControl.ResumeLayout(false);
+			this.tcResult.ResumeLayout(false);
+			this.tpChanged.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvChanged)).EndInit();
+			this.tpFaulted.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvFaulted)).EndInit();
+			this.tpAdded.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvAdded)).EndInit();
+			this.tpDeleted.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvDeleted)).EndInit();
+			this.tpExaminedPaths.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvExaminedPaths)).EndInit();
+			this.tlpResult.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.RichTextBox rtbResults;
+		private System.Windows.Forms.TabControl tcResult;
+		private System.Windows.Forms.TabPage tpChanged;
+		private System.Windows.Forms.TabPage tpFaulted;
+		private System.Windows.Forms.TabPage tpAdded;
+		private System.Windows.Forms.TabPage tpDeleted;
+		private System.Windows.Forms.TabPage tpExaminedPaths;
+		private System.Windows.Forms.DataGridView dgvChanged;
+		private System.Windows.Forms.DataGridView dgvFaulted;
+		private System.Windows.Forms.DataGridView dgvAdded;
+		private System.Windows.Forms.DataGridView dgvDeleted;
+		private System.Windows.Forms.DataGridView dgvExaminedPaths;
+		private System.Windows.Forms.TableLayoutPanel tlpResult;
 		private System.Windows.Forms.Button btnClose;
-		private System.Windows.Forms.TableLayoutPanel tlpResultForm;
-		private System.Windows.Forms.TableLayoutPanel tlpCounter;
-		private System.Windows.Forms.Label lblChanged;
-		private System.Windows.Forms.TextBox txbChanged;
-		private System.Windows.Forms.TextBox txbFaulted;
-		private System.Windows.Forms.Label lblAdded;
-		private System.Windows.Forms.TextBox txbAdded;
-		private System.Windows.Forms.Label lblDeleted;
-		private System.Windows.Forms.TextBox txbDeleted;
-		private System.Windows.Forms.Label lblFaulted;
-		private System.Windows.Forms.TableLayoutPanel tlpControl;
 		private System.Windows.Forms.ProgressBar pbProgress;
 	}
 }
