@@ -19,9 +19,8 @@ scan process can be stopped at any time with the cancel button.
 
 ![MainForm progress](./Images/MainForm2.png)
 
-After the scan process has finished, the result view opens. In the top of the
-window (1) you can see how many files are changed and how many files can not
-be checked. Also the count of added and deleted file is shown. In the textbox
-below you can see a detailed report of the scan.
+After the scan process has finished, the result view opens.
+The result is grouped in several categories.
+In each category is a detailed list of the affected items.
 
 ![ResultForm](./Images/ResultForm.png)
