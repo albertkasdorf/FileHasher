@@ -29,12 +29,12 @@
 		private void InitializeComponent( )
 		{
 			this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-			this.lblDirectories = new System.Windows.Forms.Label();
-			this.txbDirectories = new System.Windows.Forms.TextBox();
-			this.btnDirectories = new System.Windows.Forms.Button();
 			this.tlpStartStop = new System.Windows.Forms.TableLayoutPanel();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnStart = new System.Windows.Forms.Button();
+			this.lblDirectories = new System.Windows.Forms.Label();
+			this.txbDirectories = new System.Windows.Forms.TextBox();
+			this.btnDirectories = new System.Windows.Forms.Button();
 			this.ssStatus = new System.Windows.Forms.StatusStrip();
 			this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tsslPath = new System.Windows.Forms.ToolStripStatusLabel();
@@ -64,42 +64,6 @@
 			this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlpMain.Size = new System.Drawing.Size(760, 224);
 			this.tlpMain.TabIndex = 0;
-			// 
-			// lblDirectories
-			// 
-			this.lblDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lblDirectories.AutoSize = true;
-			this.lblDirectories.Location = new System.Drawing.Point(3, 13);
-			this.lblDirectories.Margin = new System.Windows.Forms.Padding(3);
-			this.lblDirectories.Name = "lblDirectories";
-			this.lblDirectories.Size = new System.Drawing.Size(60, 13);
-			this.lblDirectories.TabIndex = 0;
-			this.lblDirectories.Text = "Directories:";
-			// 
-			// txbDirectories
-			// 
-			this.txbDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.tlpMain.SetColumnSpan(this.txbDirectories, 2);
-			this.txbDirectories.Location = new System.Drawing.Point(3, 32);
-			this.txbDirectories.Multiline = true;
-			this.txbDirectories.Name = "txbDirectories";
-			this.txbDirectories.Size = new System.Drawing.Size(754, 160);
-			this.txbDirectories.TabIndex = 3;
-			// 
-			// btnDirectories
-			// 
-			this.btnDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnDirectories.AutoSize = true;
-			this.btnDirectories.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btnDirectories.Location = new System.Drawing.Point(734, 3);
-			this.btnDirectories.Name = "btnDirectories";
-			this.btnDirectories.Size = new System.Drawing.Size(23, 23);
-			this.btnDirectories.TabIndex = 2;
-			this.btnDirectories.Text = "+";
-			this.btnDirectories.UseVisualStyleBackColor = true;
-			this.btnDirectories.Click += new System.EventHandler(this.btnDirectories_Click);
 			// 
 			// tlpStartStop
 			// 
@@ -144,6 +108,42 @@
 			this.btnStart.UseVisualStyleBackColor = true;
 			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
+			// lblDirectories
+			// 
+			this.lblDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.lblDirectories.AutoSize = true;
+			this.lblDirectories.Location = new System.Drawing.Point(3, 13);
+			this.lblDirectories.Margin = new System.Windows.Forms.Padding(3);
+			this.lblDirectories.Name = "lblDirectories";
+			this.lblDirectories.Size = new System.Drawing.Size(60, 13);
+			this.lblDirectories.TabIndex = 0;
+			this.lblDirectories.Text = "Directories:";
+			// 
+			// txbDirectories
+			// 
+			this.txbDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tlpMain.SetColumnSpan(this.txbDirectories, 2);
+			this.txbDirectories.Location = new System.Drawing.Point(3, 32);
+			this.txbDirectories.Multiline = true;
+			this.txbDirectories.Name = "txbDirectories";
+			this.txbDirectories.Size = new System.Drawing.Size(754, 160);
+			this.txbDirectories.TabIndex = 3;
+			// 
+			// btnDirectories
+			// 
+			this.btnDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnDirectories.AutoSize = true;
+			this.btnDirectories.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnDirectories.Location = new System.Drawing.Point(734, 3);
+			this.btnDirectories.Name = "btnDirectories";
+			this.btnDirectories.Size = new System.Drawing.Size(23, 23);
+			this.btnDirectories.TabIndex = 2;
+			this.btnDirectories.Text = "+";
+			this.btnDirectories.UseVisualStyleBackColor = true;
+			this.btnDirectories.Click += new System.EventHandler(this.btnDirectories_Click);
+			// 
 			// ssStatus
 			// 
 			this.ssStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -158,7 +158,7 @@
 			// tspbProgress
 			// 
 			this.tspbProgress.Name = "tspbProgress";
-			this.tspbProgress.Size = new System.Drawing.Size(100, 16);
+			this.tspbProgress.Size = new System.Drawing.Size(150, 16);
 			this.tspbProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
 			this.tspbProgress.Visible = false;
 			// 
@@ -166,8 +166,10 @@
 			// 
 			this.tsslPath.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.tsslPath.Name = "tsslPath";
-			this.tsslPath.Size = new System.Drawing.Size(47, 17);
+			this.tsslPath.Size = new System.Drawing.Size(536, 17);
+			this.tsslPath.Spring = true;
 			this.tsslPath.Text = "<Path>";
+			this.tsslPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.tsslPath.Visible = false;
 			// 
 			// MainForm
@@ -177,7 +179,6 @@
 			this.ClientSize = new System.Drawing.Size(784, 261);
 			this.Controls.Add(this.tlpMain);
 			this.Controls.Add(this.ssStatus);
-			this.MinimumSize = new System.Drawing.Size(800, 300);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FileHasher";

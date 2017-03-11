@@ -49,7 +49,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -88,6 +88,7 @@
     <Compile Include="Logic\Database.cs" />
     <Compile Include="Logic\FileSystem.cs" />
     <Compile Include="Logic\FSItemSetCreator.cs" />
+    <Compile Include="Logic\Mapping.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +100,7 @@
     <Compile Include="ObjectModel\FSType.cs" />
     <Compile Include="Logic\FSItemEqualityComparer.cs" />
     <Compile Include="ObjectModel\FSItemSet.cs" />
+    <Compile Include="ObjectModel\UIProgress.cs" />
     <Compile Include="ObjectModel\UIType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

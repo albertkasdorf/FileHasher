@@ -157,8 +157,14 @@
   <data name="MainForm_CanNotCloseTaskIsRunning" xml:space="preserve">
     <value>You can not close the application as long as the scan process is running.</value>
   </data>
+  <data name="MainForm_DetermineNumberOfFiles" xml:space="preserve">
+    <value>Determine the number of files.</value>
+  </data>
   <data name="MainForm_Title" xml:space="preserve">
     <value>FileHasher</value>
+  </data>
+  <data name="MainForm_TitleFormat" xml:space="preserve">
+    <value>{0} {1}</value>
   </data>
   <data name="NoResults_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoResults_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

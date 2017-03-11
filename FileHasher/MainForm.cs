@@ -29,17 +29,17 @@ namespace FileHasher
 			workerTask = Task.Factory.StartNew( ( ) => { } );
 			uiScheduler = TaskScheduler.FromCurrentSynchronizationContext( );
 
-			var progress = new Progress<String>( );
+			var progress = new Progress<UIProgress>( );
 			progress.ProgressChanged += Progress_ProgressChanged;
 
-			this.progress= progress as IProgress<String>;
+			this.progress= progress as IProgress<UIProgress>;
 		}
 
 		private Database database;
 		private CancellationTokenSource cancellationTokenSource;
 		private Task workerTask;
 		private TaskScheduler uiScheduler;
-		private IProgress<String> progress;
+		private IProgress<UIProgress> progress;
 
 		private void InitializeBinding( )
 		{
@@ -115,6 +115,8 @@ namespace FileHasher
 			workerTask = Task.Factory.StartNew( ( ) =>
 			{
 				var stack = new Stack<Tuple<Int64, String>>( );
+				var fileCount = 0;
+				var filesProcessed = 0;
 
 				foreach( var startPath in Settings.Default.MainForm_Directories )
 				{
@@ -125,17 +127,27 @@ namespace FileHasher
 					stack.Push( new Tuple<Int64, String>( startId, startPath ) );
 				}
 
+				progress.Report(
+					new UIProgress( Resources.MainForm_DetermineNumberOfFiles ) );
+
+				fileCount = FileCountDetermine(
+					stack.ToList( ).Select( x => x.Item2 ).ToList( ),
+					cancellationTokenSource.Token );
+
 				while( stack.Count > 0 )
 				{
 					var data = stack.Pop( );
 
-					progress.Report( data.Item2 );
+					progress.Report(
+						new UIProgress( data.Item2, fileCount, filesProcessed ) );
 
 					try
 					{
 						var dbItems = database.ItemsGet( data.Item1 );
 						var fsItems = FileSystem.ItemsGet(
 							data.Item2, cancellationTokenSource.Token );
+
+						filesProcessed += fsItems.Count( );
 
 						var fsItemSet = FSItemSetCreator.Create(
 							dbItems, fsItems, data.Item2 );
@@ -186,9 +198,27 @@ namespace FileHasher
 			cancellationTokenSource.Cancel( );
 		}
 
-		private void Progress_ProgressChanged( Object sender, String e )
+		private void Progress_ProgressChanged( Object sender, UIProgress e )
 		{
-			tsslPath.Text = e;
+			tsslPath.Text = e.Message;
+			tspbProgress.Style = e.Style;
+
+			if( TaskbarManager.IsPlatformSupported )
+			{
+				TaskbarManager.Instance.SetProgressState(
+					Mapping.ToTaskbarProgressBarState( e.Style ) );
+			}
+
+			if( e.Style == ProgressBarStyle.Continuous )
+			{
+				tspbProgress.Value = e.Progress;
+
+				if( TaskbarManager.IsPlatformSupported )
+				{
+					TaskbarManager.Instance.SetProgressValue(
+						e.FilesProcessed, e.FileCount );
+				}
+			}
 		}
 
 		private void UIEnable( )
@@ -216,12 +246,16 @@ namespace FileHasher
 			btnCancel.Enabled = true;
 
 			tspbProgress.Visible = true;
+			tspbProgress.Style = ProgressBarStyle.Marquee;
+			tspbProgress.Value = 0;
+
 			tsslPath.Visible = true;
+			tsslPath.Text = string.Empty;
 
 			if( TaskbarManager.IsPlatformSupported )
 			{
 				TaskbarManager.Instance.SetProgressState(
-					TaskbarProgressBarState.Indeterminate );
+					Mapping.ToTaskbarProgressBarState( ProgressBarStyle.Marquee ) );
 			}
 		}
 
@@ -230,7 +264,50 @@ namespace FileHasher
 			var assembly = Assembly.GetExecutingAssembly( );
 			var fvi = FileVersionInfo.GetVersionInfo( assembly.Location );
 			this.Text = string.Format(
-				"{0} {1}", Resources.MainForm_Title, fvi.FileVersion );
+				Resources.MainForm_TitleFormat,
+				Resources.MainForm_Title,
+				fvi.FileVersion );
+		}
+
+		private Int32 FileCountDetermine(
+			List<string> paths, CancellationToken cancellationToken )
+		{
+			var fileCount = 0;
+
+			foreach( var path in paths )
+			{
+				fileCount += FileCountDetermine( path, cancellationToken );
+			}
+
+			return fileCount;
+		}
+
+		private Int32 FileCountDetermine(
+			string path, CancellationToken cancellationToken )
+		{
+			var fileCount = 0;
+
+			cancellationToken.ThrowIfCancellationRequested( );
+
+			try
+			{
+				var directories = Directory.EnumerateDirectories( path );
+				foreach( var directory in directories )
+				{
+					fileCount += FileCountDetermine( directory, cancellationToken );
+				}
+			}
+			catch( Exception ) { }
+
+			cancellationToken.ThrowIfCancellationRequested( );
+
+			try
+			{
+				fileCount += Directory.EnumerateFiles( path ).Count( );
+			}
+			catch( Exception ) { }
+
+			return fileCount;
 		}
 	}
 }

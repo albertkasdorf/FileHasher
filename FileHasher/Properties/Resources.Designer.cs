@@ -190,11 +190,29 @@ namespace FileHasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Determine the number of files..
+        /// </summary>
+        internal static string MainForm_DetermineNumberOfFiles {
+            get {
+                return ResourceManager.GetString("MainForm_DetermineNumberOfFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FileHasher.
         /// </summary>
         internal static string MainForm_Title {
             get {
                 return ResourceManager.GetString("MainForm_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}.
+        /// </summary>
+        internal static string MainForm_TitleFormat {
+            get {
+                return ResourceManager.GetString("MainForm_TitleFormat", resourceCulture);
             }
         }
         
