@@ -22,8 +22,8 @@ namespace FileHasher.Logic
 		public Boolean Equals( FSItem x, FSItem y )
 		{
 			var typeEqual = (x.Type == y.Type);
-			var nameEqual = includeName ? string.Compare( x.Name, y.Name ).Equals( 0 ) : true;
-			var hashEqual = includeHash ? string.Compare( x.Hash, y.Hash ).Equals( 0 ) : true;
+			var nameEqual = includeName ? string.Compare( x.Name, y.Name, false ).Equals( 0 ) : true;
+			var hashEqual = includeHash ? string.Compare( x.Hash, y.Hash, true ).Equals( 0 ) : true;
 
 			return typeEqual && nameEqual && hashEqual;
 		}

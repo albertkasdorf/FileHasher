@@ -24,7 +24,7 @@ namespace FileHasher.Logic
 				.GetDirectories( path )
 				.Select( fullPath =>
 				{
-					var name = Path.GetFileName( fullPath ).ToLower( );
+					var name = Path.GetFileName( fullPath );
 					return new FSItem( FSType.Directory, name );
 				} ) );
 
@@ -34,7 +34,7 @@ namespace FileHasher.Logic
 				{
 					cancellationToken.ThrowIfCancellationRequested( );
 
-					var name = Path.GetFileName( fullPath ).ToLower( );
+					var name = Path.GetFileName( fullPath );
 					var type = FSType.File;
 
 					try

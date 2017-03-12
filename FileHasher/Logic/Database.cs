@@ -67,7 +67,7 @@ namespace FileHasher.Logic
 
 				while( stack.Count != 0 )
 				{
-					var name = stack.Pop( ).ToLower( );
+					var name = stack.Pop( );
 
 					id = ItemIdGet( pid, name );
 					if( id.HasValue )
