@@ -27,11 +27,17 @@ namespace FileHasher.Logic
 
 		public void Open( String path )
 		{
+			var databaseMissing = !File.Exists( path );
 			var formatString = "Data Source={0}; Version=3;";
 			var connectionString = String.Format( formatString, path );
 
 			connection = new SQLiteConnection( connectionString );
 			connection.Open( );
+
+			if( databaseMissing )
+			{
+				DatabaseStructureCreate( );
+			}
 		}
 
 		public void Close( )
@@ -208,7 +214,24 @@ namespace FileHasher.Logic
 			return cmd;
 		}
 
+		private void DatabaseStructureCreate( )
+		{
+			using( var cmd = connection.CreateCommand( ) )
+			{
+				cmd.CommandText = "create table tblFileSystem ( " +
+					"id integer not null primary key autoincrement unique, " +
+					"pid integer, " +
+					"name text not null, " +
+					"hash text );";
+				cmd.ExecuteNonQuery( );
 
+				cmd.CommandText = "create unique index idxID on tblFileSystem (id asc);";
+				cmd.ExecuteNonQuery( );
+
+				cmd.CommandText = "create index idxPID on tblFileSystem (pid asc);";
+				cmd.ExecuteNonQuery( );
+			}
+		}
 
 		#region IDisposable Support
 		private bool disposedValue = false; // To detect redundant calls
